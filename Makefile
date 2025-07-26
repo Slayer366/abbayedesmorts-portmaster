@@ -31,7 +31,7 @@ CFLAGS=		-O2 -march=armv8-a+crc+simd -mtune=cortex-a72
 DATADIR= "\"./\""
 endif
 
-DATADIR?="\"$(PREFIX)/share/abbayev2\""
+DATADIR?="\"./\""
 ifneq ($(PLATFORM), mac)
 # This needs to be disabled for Macs, I think b/c RELRO is an ELF-specific feature
 # and does not apply to Mach-O binaries.

@@ -4,6 +4,8 @@
 #include "loading.h"
 #include "main.h"
 
+#define fps 50
+
 void startscreen(SDL_Window *screen,uint8_t *state,uint8_t *grapset,uint8_t *fullscreen) {
 
 	uint8_t exit = 0;
@@ -22,8 +24,11 @@ void startscreen(SDL_Window *screen,uint8_t *state,uint8_t *grapset,uint8_t *ful
 	/* Load audio */
 	Mix_Music *music = loadmus("MainTitleN");
 
+	Uint32 starting_tick;
 	while (exit != 1) {
-        
+
+		starting_tick = SDL_GetTicks();
+
         if (change == 1) { /* Only redraw when change is made */
 
             /* Cleaning the renderer */
@@ -37,7 +42,11 @@ void startscreen(SDL_Window *screen,uint8_t *state,uint8_t *grapset,uint8_t *ful
 
             /* Flip ! */
             renderpresent(renderer);
-            
+
+			if ( ( 1000 / fps ) > SDL_GetTicks() - starting_tick ) {
+				SDL_Delay( 1000 / fps - ( SDL_GetTicks() - starting_tick) );
+			}
+
             change = 0;
             
         }

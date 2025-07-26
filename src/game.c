@@ -9,6 +9,8 @@
 #include "rooms.h"
 #include "main.h"
 
+#define fps 50
+
 void game(SDL_Window *screen,uint8_t *state,uint8_t *grapset,uint8_t *fullscreen) {
 
 	/* Sounds */
@@ -83,7 +85,10 @@ void game(SDL_Window *screen,uint8_t *state,uint8_t *grapset,uint8_t *fullscreen
 	};
 
 	/* Game loop */
+	Uint32 starting_tick;
 	while (exit != 1) {
+
+		starting_tick = SDL_GetTicks();
 
 		/* Manage counters */
 		counters(counter);
@@ -241,6 +246,10 @@ void game(SDL_Window *screen,uint8_t *state,uint8_t *grapset,uint8_t *fullscreen
 
 		/* Flip ! */
 		renderpresent(renderer);
+
+		if ( ( 1000 / fps ) > SDL_GetTicks() - starting_tick ) {
+			SDL_Delay( 1000 / fps - ( SDL_GetTicks() - starting_tick) );
+		}
 
 		if (parchment > 0) {
 			Mix_PlayChannel(-1, fx[2], 0);

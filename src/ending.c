@@ -4,6 +4,8 @@
 #include "loading.h"
 #include "main.h"
 
+#define fps 50
+
 void ending (SDL_Window *screen,uint8_t *state) {
 
 	SDL_Texture *tiles = loadtexture(renderer, "tiles");
@@ -18,7 +20,10 @@ void ending (SDL_Window *screen,uint8_t *state) {
 
 	Mix_PlayMusic(bso,0);
 
+	Uint32 starting_tick;
 	for (int16_t i=0;i<951;i++) {
+
+		starting_tick = SDL_GetTicks();
 
 		/* Cleaning the renderer */
 		SDL_RenderClear(renderer);
@@ -36,6 +41,10 @@ void ending (SDL_Window *screen,uint8_t *state) {
 
 		/* Flip */
 		renderpresent(renderer);
+
+		if ( ( 1000 / fps ) > SDL_GetTicks() - starting_tick ) {
+			SDL_Delay( 1000 / fps - ( SDL_GetTicks() - starting_tick) );
+		}
 
 	}
 

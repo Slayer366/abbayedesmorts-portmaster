@@ -4,6 +4,8 @@
 #include "loading.h"
 #include "main.h"
 
+#define fps 50
+
 void history(SDL_Window *screen,uint8_t *state,uint8_t *grapset,uint8_t *fullscreen) {
 
 	SDL_Event keyp;
@@ -26,7 +28,10 @@ void history(SDL_Window *screen,uint8_t *state,uint8_t *grapset,uint8_t *fullscr
 	uint8_t animation = 0;
 	uint8_t musicload = 0;
 
+	Uint32 starting_tick;
 	while (exit != 1) {
+
+		starting_tick = SDL_GetTicks();
 
 		/* Cleaning the renderer */
 		SDL_RenderClear(renderer);
@@ -121,6 +126,10 @@ void history(SDL_Window *screen,uint8_t *state,uint8_t *grapset,uint8_t *fullscr
 
 		/* Flip ! */
 		renderpresent(renderer);
+
+		if ( ( 1000 / fps ) > SDL_GetTicks() - starting_tick ) {
+			SDL_Delay( 1000 / fps - ( SDL_GetTicks() - starting_tick) );
+		}
 
 	}
 

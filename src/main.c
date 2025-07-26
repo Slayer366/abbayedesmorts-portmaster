@@ -59,12 +59,12 @@ int main (int argc, char** argv) {
 	SDL_RenderClear(renderer);
 
 	/* Init joystick if there's one connected */
-	SDL_Joystick *joystick = NULL;
+//	SDL_Joystick *joystick = NULL;
 
-	if (SDL_Init(SDL_INIT_JOYSTICK) >= 0) {
-		joystick = SDL_NumJoysticks() > 0 ? SDL_JoystickOpen(0) : NULL; 
-		SDL_JoystickEventState(SDL_ENABLE);
-	}
+//	if (SDL_Init(SDL_INIT_JOYSTICK) >= 0) {
+//		joystick = SDL_NumJoysticks() > 0 ? SDL_JoystickOpen(0) : NULL; 
+//		SDL_JoystickEventState(SDL_ENABLE);
+//	}
 
 	/* Hide mouse cursor */
 	SDL_ShowCursor(SDL_DISABLE);
@@ -101,7 +101,7 @@ int main (int argc, char** argv) {
 	}
 
 	/* Cleaning */
-	SDL_JoystickClose(joystick);
+//	SDL_JoystickClose(joystick);
 	SDL_DestroyTexture(target);
 	SDL_DestroyRenderer(renderer);
 	SDL_DestroyWindow(screen);
