@@ -23,6 +23,10 @@ Currently, this port works on:
  * PSP [Link](https://t.co/AkH3HvG3kr)
  * XBox [Link](https://t.co/rLwe4UCi43) 
  * Nintendo 3DS (replaced SDL2) [Link](http://www.nintendomax.com/viewtopic.php?t=16450)
+ * Anbernic RG351, RG353, RG503, RG552, RG35XX, RG40XX, RG34XX
+ * Powkiddy X55
+ * Gameforce Chi
+ * SteamDeck running RetroDeck
 
 Feel free to port this program to other systems. It is open source, take the code and
 modify it to fit your platforms needs!
